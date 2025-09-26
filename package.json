@@ -1,0 +1,15 @@
+{
+  "name": "fhir",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "fhir": "^4.12.0",
+    "fhir-kit-client": "^1.9.2"
+  }
+}

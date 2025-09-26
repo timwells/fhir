@@ -1,0 +1,215 @@
+{
+  "resourceType": "Bundle",
+  "type": "document",
+  "identifier": {
+    "system": "http://example.org/doc-ids",
+    "value": "doc-20250926-001"
+  },
+  "timestamp": "2025-09-26T21:15:21.469Z",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:comp-001",
+      "resource": {
+        "resourceType": "Composition",
+        "id": "comp-001",
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "58410-2",
+              "display": "Complete blood count (CBC) panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/pat-001"
+        },
+        "author": [
+          {
+            "display": "CityLab Pathology"
+          }
+        ],
+        "title": "Pathology Result Document",
+        "section": [
+          {
+            "title": "Lab Results",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "58410-2"
+                }
+              ]
+            },
+            "entry": [
+              {
+                "reference": "DiagnosticReport/dr-001"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:dr-001",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "dr-001",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "58410-2",
+              "display": "Complete blood count (CBC) panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/pat-001"
+        },
+        "effectiveDateTime": "2025-09-26T09:00:00+01:00",
+        "issued": "2025-09-26T10:30:00+01:00",
+        "performer": [
+          {
+            "reference": "Organization/lab-org-001"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/obs-001"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:obs-001",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-001",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "718-7",
+              "display": "Hemoglobin [Mass/volume] in Blood"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/pat-001"
+        },
+        "effectiveDateTime": "2025-09-26T09:00:00+01:00",
+        "valueQuantity": {
+          "value": 14.2,
+          "unit": "g/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "g/dL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 13.5,
+              "unit": "g/dL"
+            },
+            "high": {
+              "value": 17.5,
+              "unit": "g/dL"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:pat-001",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "pat-001",
+        "identifier": [
+          {
+            "system": "http://hospital.example.org/patient-id",
+            "value": "PAT123456"
+          }
+        ],
+        "name": [
+          {
+            "family": "Smith",
+            "given": [
+              "Jane"
+            ]
+          }
+        ],
+        "birthDate": "1980-05-15"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:lab-org-001",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "lab-org-001",
+        "name": "CityLab Pathology",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+1-555-123-4567"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:prov-001",
+      "resource": {
+        "resourceType": "Provenance",
+        "id": "prov-001",
+        "target": [
+          {
+            "reference": "Composition/comp-001"
+          },
+          {
+            "reference": "Bundle/doc-20250926-001"
+          }
+        ],
+        "recorded": "2025-09-26T21:15:21.467Z",
+        "activity": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-DataOperation",
+              "code": "TRANSFORM",
+              "display": "Transform"
+            }
+          ]
+        },
+        "agent": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/provenance-participant-type",
+                  "code": "assembler",
+                  "display": "Assembler"
+                }
+              ]
+            },
+            "who": {
+              "display": "FHIR Conversion System"
+            }
+          }
+        ],
+        "reason": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+                "code": "TREAT",
+                "display": "Treatment"
+              }
+            ],
+            "text": "Converted Message Bundle to Document Bundle for archival storage"
+          }
+        ]
+      }
+    }
+  ]
+}
